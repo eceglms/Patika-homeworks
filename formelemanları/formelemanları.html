@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kayıt Formu</title>
+    </head>
+    
+    <style>
+        body {
+            background-color: rgb(208, 105, 117);
+            color: antiquewhite;
+        
+        }
+    </style>
+    <style>
+        h2 {
+            text-align: center;
+            border: 3px solid antiquewhite;
+        }
+    </style>
+        <h2>KAYIT FORMU</h2>
+        <form action="/thankyou.html" method="get"></form>
+        <h3>Adınız:</h3>
+        <input type="text" name="Ad" placeholder="Lütfen adınızı yazın."> <br>
+        <h3>Soyadınız:</h3>
+        <input type="text" name="Soyad" placeholder="Lütfen Soyadınızı yazın"> <br>
+        <h3>E-mailiniz:</h3>
+        <input type="email" name="email" id="email" placeholder="Lütfen email adresinizi yazın."> <br>
+        <h3>Parolanız:</h3>
+        <input type="password" name="password" id="password" placeholder="Lütfen bir parola belirleyin."> <br>
+        <h3>Cinsiyetiniz:</h3>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">KADIN</label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">ERKEK</label><br>
+        <input type="radio" id="none" name="gender" value="none" required>
+        <label for="none">BUNLARDAN BİRİ DEĞİL</label>
+        <h3>Favori meyvenizi seçiniz.</h3>
+        <select id="fruit" name="fruit">
+          <option value="Tümü.">Tümü</option>
+          <option value="Çilek">Çilek</option>
+          <option value="Böğürtlen">Böğürtlen</option>
+          <option value="Ananas">Ananas</option>
+          <option value="Kavun">Kavun</option>
+  </select><br>
+  <p>Bunlar dışında bilmemiz gerektiğini düşündüğünüz bilgilerinizi aşağıdaki mesaj bölümünden bizimle paylaşabilirsiniz.</p>
+  <label for="message">Mesajınız:</label><br>
+  <textarea id="message" name="message" rows="10" cols="70" placeholder="Buraya yazın."></textarea><br>
+  <input type="button" value="Gönder">
+        
+    </body>
+</html>
