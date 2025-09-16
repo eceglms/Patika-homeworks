@@ -1,0 +1,49 @@
+body{
+  background-color:#fafafa;
+  padding-top:54px; 
+}
+
+/* NAVBAR */
+.navbar{ height:54px; background:#fff !important; }
+.logo{ margin-left:192px; }
+.navbar .nav-link i{ color:#000; }
+
+@media (max-width:575.98px){
+  .navbar .navbar-nav{ display:none !important; }
+}
+input.form-control.empty{
+  height:28px;
+  width:216px;
+  padding-left:28px; 
+  background:#fff;
+  border:1px solid #dbdbdb;
+  border-radius:.25rem;
+  background-image:url('assets/search.svg');
+  background-repeat:no-repeat;
+  background-position:6px center;
+}
+input.form-control.empty::placeholder{ color:#999; }
+
+.container.middlearea{ max-width:935px; margin:0 auto; }
+@media(min-width:992px){
+  .feed{ flex:0 0 614px; max-width:614px; }
+  .sidebar{ flex:0 0 293px; max-width:293px; margin-left:28px; }
+}
+
+/* Hikayeler */
+.storyphoto{
+  width:66px; height:66px;
+  border-radius:50%;
+  border:2px solid rgb(238,39,82);
+  object-fit:cover;
+}
+.storytext{ text-align:center; }
+
+/* Post görseli */
+.card-img-top{ width:100%; height:auto; display:block; }
+.list-group{ border:0 !important; }
+.list-group .nav-link{ padding:0 .75rem; }
+.card-header, .card-footer{ background:#fff; }
+.rightpanel{ background:#fff; border:0; border-radius:.25rem; }
+.stickysidebar{ position:sticky; top:70px; }
+.middlearea{ max-height:200px !important; }
