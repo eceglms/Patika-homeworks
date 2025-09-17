@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1400px okunabilirlik için yardımcı sınıf */
+.container-1400 {
+  @apply container 2xl:max-w-[1400px] px-4 md:px-6;
+}
