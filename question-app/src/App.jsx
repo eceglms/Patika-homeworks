@@ -19,7 +19,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* footer sağ altta */}
+      {/* footer */}
       <footer className="mt-auto">
         <div className="container-1400 py-4 text-right text-indigo-300/70">
           ©{year} · Created by <span className="font-medium">Ece Gulmus</span>

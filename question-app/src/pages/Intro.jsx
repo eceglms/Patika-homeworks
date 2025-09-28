@@ -7,7 +7,6 @@ export default function Intro() {
     <section className="rounded-2xl p-6 md:p-8 shadow-xl ring-1 ring-white/10 bg-white/5">
       <h2 className="text-2xl md:text-3xl font-semibold text-slate-200">Bilgilendirme</h2>
 
-      {/* madde madde, alt alta */}
       <ul className="mt-5 space-y-3 text-slate-200">
         <li>Test <strong>10</strong> sorudan oluşur.</li>
         <li>Her soru ekranda en fazla <strong>30 saniye</strong> kalır.</li>

@@ -64,7 +64,7 @@ export default function Quiz() {
     }, 500);
   }
 
-  // son soruda state’e son tıklananı da eklemek için yardımcı
+  // son soruda state’e son tıklananı da eklemek
   function answersWith(lastChoice) {
     const clone = [...answers];
     clone[idx] = lastChoice;

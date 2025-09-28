@@ -26,7 +26,6 @@ export default function Result() {
         </button>
       </div>
 
-      {/* Soru soru döküm — yazılar indigo paletinde (beyaz değil) */}
       <div className="space-y-3">
         {questions.map((q, i) => {
           const mine = answers[i] ?? null;
