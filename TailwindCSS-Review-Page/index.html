@@ -1,0 +1,270 @@
+
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TailwindCSS Review Page</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6C4CF1',
+            mutedbg: '#E7E8EC'
+          },
+          boxShadow: {
+            card: '0 8px 20px rgba(17, 24, 39, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+ 
+<!-- Navbar -->
+  <nav class="w-full border-y bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <!-- Left: tabs -->
+        <div class="flex items-center gap-1 text-sm">
+          <button class="px-3 py-1.5 rounded-md bg-primary/10 text-primary font-medium">Link</button>
+          <button class="px-3 py-1.5 rounded-md hover:bg-gray-100 text-gray-600">Link</button>
+          <button class="px-3 py-1.5 rounded-md hover:bg-gray-100 text-gray-600">Link</button>
+        </div>
+
+        <!-- Center: logo -->
+        <div class="flex items-center gap-2">
+          <div class="h-6 w-6 rounded-full border border-gray-300 grid place-items-center">
+            <svg class="h-3.5 w-3.5 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3l9 7-9 7-9-7 9-7z" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: search + login -->
+        <div class="flex items-center gap-3">
+          <label class="relative hidden sm:block">
+            <input class="pl-8 pr-3 py-1.5 rounded-md border border-gray-300 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Search..." />
+            <svg class="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M21 21l-3.6-3.6"></path>
+            </svg>
+          </label>
+          <button class="text-xs px-3 py-1.5 rounded-md bg-primary text-white">Log in</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="w-full bg-mutedbg">
+    <div class="max-w-6xl mx-auto px-4 py-20 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-800">
+        Quisquam necessita
+        <span class="block">vel <span class="text-primary">laborum</span></span>
+        <span><span class="text-primary">doloribus</span> delectus</span>
+      </h1>
+      <p class="mt-4 max-w-xl mx-auto text-xs sm:text-sm text-gray-600">
+        Cupiditate minima voluptate temporibus quia? Architecto beatae esse ab amet vero eaque explicabo!
+      </p>
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <a href="#" class="px-5 py-2 rounded-md bg-primary text-white text-xs shadow hover:bg-primary/90">Get started</a>
+        <a href="#" class="px-5 py-2 rounded-md bg-white text-gray-700 text-xs border border-gray-200 hover:bg-gray-50">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What customers say title -->
+  <section class="w-full bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <h2 class="text-center text-lg sm:text-xl font-semibold text-gray-700">What our customers are saying about us</h2>
+
+      <!-- Testimonials grid 2x2 -->
+      <div class="mt-8 grid sm:grid-cols-2 gap-6">
+        <!-- Card -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-card border border-gray-100">
+          <div class="p-5 pb-3">
+            <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V22h8v-8H6.83A3.83 3.83 0 0 1 10.66 10 4.66 4.66 0 0 0 7.17 6Zm9 0A5.17 5.17 0 0 0 11 11.17V22h8v-8h-3.17A3.83 3.83 0 0 1 19.66 10 4.66 4.66 0 0 0 16.17 6Z"/>
+            </svg>
+            <p class="mt-2 text-[13px] leading-5 text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quibusdam, eligendi exercitationem molestias possimus facere.
+            </p>
+            <div class="flex items-center justify-end gap-1 text-primary mt-1">
+              <span class="h-1.5 w-1.5 bg-primary rounded-full inline-block"></span>
+              <span class="h-1.5 w-1.5 bg-primary/60 rounded-full inline-block"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4 bg-gray-50 flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-gray-200 grid place-items-center text-[11px] text-gray-600">DA</div>
+            <div>
+              <div class="text-xs font-semibold text-gray-700">Distinctio Animi</div>
+              <div class="text-[10px] text-primary font-semibold uppercase tracking-wide">Aliquam Illum</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-card border border-gray-100">
+          <div class="p-5 pb-3">
+            <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V22h8v-8H6.83A3.83 3.83 0 0 1 10.66 10 4.66 4.66 0 0 0 7.17 6Zm9 0A5.17 5.17 0 0 0 11 11.17V22h8v-8h-3.17A3.83 3.83 0 0 1 19.66 10 4.66 4.66 0 0 0 16.17 6Z"/>
+            </svg>
+            <p class="mt-2 text-[13px] leading-5 text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quibusdam, eligendi exercitationem molestias possimus facere.
+            </p>
+            <div class="flex items-center justify-end gap-1 text-primary mt-1">
+              <span class="h-1.5 w-1.5 bg-primary rounded-full inline-block"></span>
+              <span class="h-1.5 w-1.5 bg-primary/60 rounded-full inline-block"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4 bg-gray-50 flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-gray-200 grid place-items-center text-[11px] text-gray-600">DA</div>
+            <div>
+              <div class="text-xs font-semibold text-gray-700">Distinctio Animi</div>
+              <div class="text-[10px] text-primary font-semibold uppercase tracking-wide">Aliquam Illum</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-card border border-gray-100">
+          <div class="p-5 pb-3">
+            <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V22h8v-8H6.83A3.83 3.83 0 0 1 10.66 10 4.66 4.66 0 0 0 7.17 6Zm9 0A5.17 5.17 0 0 0 11 11.17V22h8v-8h-3.17A3.83 3.83 0 0 1 19.66 10 4.66 4.66 0 0 0 16.17 6Z"/>
+            </svg>
+            <p class="mt-2 text-[13px] leading-5 text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quibusdam, eligendi exercitationem molestias possimus facere.
+            </p>
+            <div class="flex items-center justify-end gap-1 text-primary mt-1">
+              <span class="h-1.5 w-1.5 bg-primary rounded-full inline-block"></span>
+              <span class="h-1.5 w-1.5 bg-primary/60 rounded-full inline-block"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4 bg-gray-50 flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-gray-200 grid place-items-center text-[11px] text-gray-600">DA</div>
+            <div>
+              <div class="text-xs font-semibold text-gray-700">Distinctio Animi</div>
+              <div class="text-[10px] text-primary font-semibold uppercase tracking-wide">Aliquam Illum</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-card border border-gray-100">
+          <div class="p-5 pb-3">
+            <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V22h8v-8H6.83A3.83 3.83 0 0 1 10.66 10 4.66 4.66 0 0 0 7.17 6Zm9 0A5.17 5.17 0 0 0 11 11.17V22h8v-8h-3.17A3.83 3.83 0 0 1 19.66 10 4.66 4.66 0 0 0 16.17 6Z"/>
+            </svg>
+            <p class="mt-2 text-[13px] leading-5 text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quibusdam, eligendi exercitationem molestias possimus facere.
+            </p>
+            <div class="flex items-center justify-end gap-1 text-primary mt-1">
+              <span class="h-1.5 w-1.5 bg-primary rounded-full inline-block"></span>
+              <span class="h-1.5 w-1.5 bg-primary/60 rounded-full inline-block"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4 bg-gray-50 flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-gray-200 grid place-items-center text-[11px] text-gray-600">DA</div>
+            <div>
+              <div class="text-xs font-semibold text-gray-700">Distinctio Animi</div>
+              <div class="text-[10px] text-primary font-semibold uppercase tracking-wide">Aliquam Illum</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact section #1 -->
+  <section class="w-full bg-mutedbg">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="max-w-md mx-auto bg-white rounded-xl border border-gray-200 shadow-card p-6">
+        <h3 class="text-gray-800 font-semibold">Contact us</h3>
+        <form class="mt-4 space-y-3">
+          <label class="block">
+            <span class="text-xs text-gray-600">Name</span>
+            <input type="text" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Your name" />
+          </label>
+          <label class="block">
+            <span class="text-xs text-gray-600">Email</span>
+            <input type="email" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Your email" />
+          </label>
+          <label class="block">
+            <span class="text-xs text-gray-600">Message</span>
+            <textarea class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm h-24 resize-none focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Message..."></textarea>
+          </label>
+          <button type="button" class="w-full text-xs px-4 py-2 rounded-md bg-primary text-white">Send</button>
+        </form>
+      </div>
+
+      <!-- bottom links + icons -->
+      <div class="mt-6 flex items-center justify-between text-[11px] text-gray-500">
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-gray-700">Shop</a>
+          <a href="#" class="hover:text-gray-700">About</a>
+          <a href="#" class="hover:text-gray-700">Blog</a>
+          <a href="#" class="hover:text-gray-700">Pricing</a>
+          <a href="#" class="hover:text-gray-700">Contact</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <!-- simple circular icons -->
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">in</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">ig</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">x</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">fb</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">g</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact section #2 (duplicate like mock) -->
+  <section class="w-full bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="max-w-md mx-auto bg-white rounded-xl border border-gray-200 shadow-card p-6">
+        <h3 class="text-gray-800 font-semibold">Contact us</h3>
+        <form class="mt-4 space-y-3">
+          <label class="block">
+            <span class="text-xs text-gray-600">Name</span>
+            <input type="text" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Your name" />
+          </label>
+          <label class="block">
+            <span class="text-xs text-gray-600">Email</span>
+            <input type="email" class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Your email" />
+          </label>
+          <label class="block">
+            <span class="text-xs text-gray-600">Message</span>
+            <textarea class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm h-24 resize-none focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60" placeholder="Message..."></textarea>
+          </label>
+          <button type="button" class="w-full text-xs px-4 py-2 rounded-md bg-primary text-white">Send</button>
+        </form>
+      </div>
+
+      <!-- bottom links + icons -->
+      <div class="mt-6 flex items-center justify-between text-[11px] text-gray-500">
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-gray-700">Shop</a>
+          <a href="#" class="hover:text-gray-700">About</a>
+          <a href="#" class="hover:text-gray-700">Blog</a>
+          <a href="#" class="hover:text-gray-700">Pricing</a>
+          <a href="#" class="hover:text-gray-700">Contact</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">in</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">ig</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">x</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">fb</span>
+          <span class="h-5 w-5 rounded-full bg-white border border-gray-300 grid place-items-center text-[10px]">g</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8"></footer>
+</body>
+</html>
