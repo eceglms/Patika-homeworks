@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NotesApp</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>NotesApp</h1>
+
+    <input id="search" class="search" type="search" placeholder="Search..." />
+
+    <section class="composer card">
+      <textarea id="note-input" rows="5" placeholder="Enter your note here..."></textarea>
+
+      <div class="controls">
+        <div class="colors" id="color-palette" aria-label="Renk seç">
+          <!-- data-color ile renkler tanımlanıyor -->
+          <button class="swatch" data-color="#f43f5e" title="Rose"></button>
+          <button class="swatch" data-color="#f59e0b" title="Amber"></button>
+          <button class="swatch" data-color="#10b981" title="Emerald"></button>
+          <button class="swatch" data-color="#3b82f6" title="Blue"></button>
+          <button class="swatch" data-color="#a78bfa" title="Violet"></button>
+          <button class="swatch" data-color="#9ca3af" title="Gray"></button>
+        </div>
+
+        <button id="add-btn" class="add">ADD</button>
+      </div>
+    </section>
+
+    <section>
+      <ul id="notes" class="notes"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
