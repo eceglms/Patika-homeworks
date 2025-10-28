@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Indie+Flower&display=swap');
+
+body {
+  background-color: #2f3439;
+  color: #fdf5e6;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: #fff1c1;
+  margin-bottom: 30px;
+}
+
+.players {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+
+.player input, .player p {
+  font-size: 1.5rem;
+  color: #50e3c2;
+  background: none;
+  border: none;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  outline: none;
+}
+
+.dice {
+  width: 120px;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #50e3c2;
+  border: none;
+  padding: 12px 40px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #2f3439;
+  font-family: 'Pacifico', cursive;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+footer {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #ccc;
+}
