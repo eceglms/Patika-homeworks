@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Todo App (React)</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+  <section id="root"></section>
+
+  <!-- React 18 UMD + Babel (geliştirme için) -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Uygulama -->
+  <script type="text/babel">
+    const { useEffect, useMemo, useRef, useState } = React;
+
+    // -------------------------
+    // Utils
+    // -------------------------
+    const STORAGE_KEY = "todoapp.react.v1";
+    const uid = () =>
+      (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+
+    // -------------------------
+    // App
+    // -------------------------
+    function App() {
+      const [todos, setTodos] = useState(() => {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+        catch { return []; }
+      });
+      const [filter, setFilter] = useState("all"); // all | active | completed
+      const newTodoRef = useRef(null);
+
+      // persist
+      useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+      }, [todos]);
+
+      const leftCount = useMemo(() => todos.filter(t => !t.completed).length, [todos]);
+      const allCompleted = useMemo(() => todos.length > 0 && leftCount === 0, [todos, leftCount]);
+
+      // derived list
+      const visibleTodos = useMemo(() => {
+        if (filter === "active") return todos.filter(t => !t.completed);
+        if (filter === "completed") return todos.filter(t => t.completed);
+        return todos;
+      }, [todos, filter]);
+
+      // actions
+      const addTodo = (text) => {
+        const title = text.trim();
+        if (!title) return;
+        setTodos(prev => [{ id: uid(), title, completed: false, editing: false }, ...prev]);
+      };
+
+      const toggleTodo = (id) => {
+        setTodos(prev => prev.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+      };
+
+      const destroyTodo = (id) => {
+        setTodos(prev => prev.filter(t => t.id !== id));
+      };
+
+      const clearCompleted = () => {
+        setTodos(prev => prev.filter(t => !t.completed));
+      };
+
+      const toggleAll = (checked) => {
+        setTodos(prev => prev.map(t => ({ ...t, completed: checked })));
+      };
+
+      const startEdit = (id) => {
+        setTodos(prev => prev.map(t => t.id === id ? ({ ...t, editing: true }) : ({ ...t, editing: false })));
+      };
+
+      const submitEdit = (id, text) => {
+        const title = text.trim();
+        if (!title) {
+          destroyTodo(id);
+        } else {
+          setTodos(prev => prev.map(t => t.id === id ? ({ ...t, title, editing: false }) : t));
+        }
+      };
+
+      const cancelEdit = (id) => {
+        setTodos(prev => prev.map(t => t.id === id ? ({ ...t, editing: false }) : t));
+      };
+
+      // handle form submit
+      const onSubmit = (e) => {
+        e.preventDefault();
+        addTodo(newTodoRef.current.value);
+        newTodoRef.current.value = "";
+      };
+
+      return (
+        <section className="todoapp">
+          <header className="header">
+            <h1>todos</h1>
+            <form onSubmit={onSubmit}>
+              <input
+                ref={newTodoRef}
+                className="new-todo"
+                placeholder="What needs to be done?"
+                autoFocus
+              />
+            </form>
+          </header>
+
+          <section className="main">
+            <input
+              id="toggle-all"
+              className="toggle-all"
+              type="checkbox"
+              checked={allCompleted}
+              onChange={(e) => toggleAll(e.target.checked)}
+            />
+            <label htmlFor="toggle-all">Mark all as complete</label>
+
+            <ul className="todo-list">
+              {visibleTodos.map(todo => (
+                <TodoItem
+                  key={todo.id}
+                  todo={todo}
+                  onToggle={() => toggleTodo(todo.id)}
+                  onDestroy={() => destroyTodo(todo.id)}
+                  onStartEdit={() => startEdit(todo.id)}
+                  onSubmitEdit={(text) => submitEdit(todo.id, text)}
+                  onCancelEdit={() => cancelEdit(todo.id)}
+                />
+              ))}
+            </ul>
+          </section>
+
+          <Footer
+            leftCount={leftCount}
+            filter={filter}
+            setFilter={setFilter}
+            hasCompleted={todos.some(t => t.completed)}
+            onClearCompleted={clearCompleted}
+          />
+        </section>
+      );
+    }
+
+    // -------------------------
+    // TodoItem
+    // -------------------------
+    function TodoItem({ todo, onToggle, onDestroy, onStartEdit, onSubmitEdit, onCancelEdit }) {
+      const [draft, setDraft] = useState(todo.title);
+      const editRef = useRef(null);
+
+      useEffect(() => {
+        setDraft(todo.title);
+        if (todo.editing && editRef.current) {
+          editRef.current.focus();
+          editRef.current.selectionStart = editRef.current.value.length;
+        }
+      }, [todo.editing, todo.title]);
+
+      const onKeyDown = (e) => {
+        if (e.key === "Enter") onSubmitEdit(draft);
+        if (e.key === "Escape") onCancelEdit();
+      };
+
+      return (
+        <li className={`${todo.completed ? "completed" : ""} ${todo.editing ? "editing" : ""}`}>
+          <div className="view">
+            <input className="toggle" type="checkbox" checked={todo.completed} onChange={onToggle} />
+            {/* Orijinal CSS "Click to edit a todo" dediği için label'a click ile edit başlatıyoruz */}
+            <label onClick={onStartEdit}>{todo.title}</label>
+            <button className="destroy" onClick={onDestroy}></button>
+          </div>
+          <input
+            ref={editRef}
+            className="edit"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onBlur={() => onSubmitEdit(draft)}
+            onKeyDown={onKeyDown}
+          />
+        </li>
+      );
+    }
+
+    // -------------------------
+    // Footer
+    // -------------------------
+    function Footer({ leftCount, filter, setFilter, hasCompleted, onClearCompleted }) {
+      return (
+        <footer className="footer">
+          <span className="todo-count">
+            <strong>{leftCount}</strong> {leftCount === 1 ? "item" : "items"} left
+          </span>
+
+          <ul className="filters">
+            <li><a className={filter === "all" ? "selected" : ""} onClick={() => setFilter("all")}>All</a></li>
+            <li><a className={filter === "active" ? "selected" : ""} onClick={() => setFilter("active")}>Active</a></li>
+            <li><a className={filter === "completed" ? "selected" : ""} onClick={() => setFilter("completed")}>Completed</a></li>
+          </ul>
+
+          {hasCompleted && (
+            <button className="clear-completed" onClick={onClearCompleted}>Clear completed</button>
+          )}
+        </footer>
+      );
+    }
+
+    // -------------------------
+    // Info (orijinal alt bilgi)
+    // -------------------------
+    function Info() {
+      return (
+        <footer className="info">
+          <p>Click to edit a todo</p>
+          <p>Created by <a href="https://d12n.me/" target="_blank" rel="noreferrer">Dmitry Sharabin</a></p>
+          <p>Part of <a href="http://todomvc.com" target="_blank" rel="noreferrer">TodoMVC</a></p>
+        </footer>
+      );
+    }
+
+    function Root() {
+      return (
+        <>
+          <App />
+          <Info />
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Root />);
+  </script>
+</body>
+</html>
